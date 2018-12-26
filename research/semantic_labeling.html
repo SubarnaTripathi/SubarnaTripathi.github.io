@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Subarna | Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subarna Tripathi's homepage at the Video Processing Lab at University of California, San Diego">
+    <meta name="author" content="Subarna Tripathi">
+    <meta name="keywords" content="video processing, computer vision, segmentation, recognition">
+    <link rel="home" href="acsweb.ucsd.edu/~stripath/">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/bootstrap.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/st_vpl.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/images/logo.ICO" rel="shortcut icon">
+</head>
+
+<body style="">
+    <div class="container">
+       <!-- Header -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6 pull-left visible-md visible-lg">
+                <a href="http://acsweb.ucsd.edu/~stripath"><img src="project_files/vpl.png" class="img-responsive" alt="logo"></a>
+            </div>
+            <div class="col-xs-12 col-md-6 hdr">
+                <a class="hdr name" href="index.html">Subarna Tripathi</a><br>
+                <a class="hdr affil" href="http://videoprocessing.ucsd.edu/">Video Processing Laboratory</a><br>
+                <a class="hdr affil" href="http://www.ece.ucsd.edu/">Dept. of Electrical and Computer Eng.</a><br>
+                <a class="hdr affil" href="http://ucsd.edu/">University of California, San Diego</a>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav menu">
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Home</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/publication.html">Publications</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/project.html">Research</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/Resume.pdf">Resumé</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Contact</a></li>
+					<li><a href="https://github.com/subtri">My Github</a></li>
+					<li><a href="http://acsweb.ucsd.edu/~stripath/memories.html">Some memories</a></li>
+                </ul>
+            </div>
+        </div>
+        
+            <h1>Research: Semantic Labeling</h1>
+			<div class="well">
+			<div class="row">
+				<div class="col-md-3 visible-md visible-lg pull-right">
+					<img src="./project_files/multiclass_summary.jpg" class="img-responsive" alt="semantics">
+				</div>
+			<div>
+		<div>
+    
+	<h3>Background</h3>
+        <p> The problem of semantic labeling of image sequences is to classify each pixel of an image to the proper semantic categories, like sky, tree, roads, humans etc. We have evaluated ALE (2010) by Oxford Brookes University, TextonBoost (2006) from Microsoft Research and the Darwin library (2012) from Australian National University for multiclass image segmentation. Currently we are looking at improving video multiclass segmentation. 
+		<p> The image in the right shows a semantic labeling of two images from CamVid dataset; the legends are also shown below. 
+		In CamVid dataset there are 32 object classes. 
+		</p>
+		
+		
+		
+    <h3>Results</h3>
+		<p>We use the MSRC-21, Sowerby and Camvid database. We found ALE performs the best in terms of accuracy. </p>
+		<h4>Experiments on MSRC-21</h4>
+		<p> We found ALE performs the best in terms of accuracy. </p>
+		<div class="well">
+			<div class="row">
+				<div class="col-md-10 visible-md visible-lg pull-right-10">
+					<img src="./project_files/comp_multclass.jpg" class="img-responsive" alt="comparative performance on MSRC-21">
+				</div>
+			</div>
+		</div>
+
+        <h4>Experiments on CamVid</h4>
+            <p>We look at improving video multiclass segmentation. Below are a set of examples from CamVid dataset of original image sequences, the ground truth sequences and the out sequences from slightly ALE program. </p>
+		<div class="well">
+			<div class="row">
+				<div class="col-md-4 visible-md visible-lg">
+					<img src="./project_files/CamVid.gif" class="img-responsive" alt="original video frames">
+				</div>
+				<div class="col-md-4 visible-md visible-lg">
+					<img src="./project_files/Camvid_semantics_gt.gif" class="img-responsive" alt="semantic segmentations groundtruth">
+				</div>
+				<div class="col-md-4 visible-md visible-lg">
+					<img src="./project_files/Camvid_semantics_out.gif" class="img-responsive" alt="semantic segmentations output">
+				</div>
+			</div>	
+		</div>  
+    
+    
+    <h3>Updates</h3>	
+	<p>
+    Fast and efficient inference in dense CRF has been proposed in [2]. We have implemented efficient inference in spatio-temporal setting, where inference is drwan on a group of video frames together without additional time overhead. Apart from some of our tweaks, this idea is based on [3]. 
+	Our code for inference in video can be found in <a href="https://github.com/subtri/DenseCRF_multiclass_video_segmentation"> github </a>. We are currently in a process to use higher order clique potentials for inference in video. 
+    </p>	
+    
+	<h3>References</h3>
+        <p>[1] L’ubor Ladický <i>et al</i>. Joint Optimisation for Object Class Segmentation and Dense Stereo Reconstruction. BMVC 2010. </p> 
+		<p>[2] Philipp Krähenbühl and Vladlen Koltun, Parameter learning and convergent inference for dense random fields, ICML 2013 </p>
+        <p>[3] José M. Alvarez, Mathieu Salzmann, Nick Barnes. Large-Scale Semantic Co-Labeling of Image Sets. IEEE Winter Conference on Applications of Computer Vision (WACV 14) </p>
+        
+    </div> <!-- /container -->
+
+    <!-- JavaScript: placed at the end of the document so the pages load faster -->
+    <script src="./video_segmentation_files/jquery-1.10.2.min.js"></script>
+    <script src="./video_segmentation_files/bootstrap.min.js"></script>
+        
+
+
+
+</body></html>

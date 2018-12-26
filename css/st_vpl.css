@@ -1,0 +1,213 @@
+/* General */
+body {
+    font-family: calibri;
+    padding-top: 30px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+p {
+    color: #000;
+    font-size: 14pt;
+}
+
+
+/* Header */
+.hdr {
+	color: #666362;
+    line-height: 120%;
+}
+.name {
+	font-size: 36pt;
+	font-weight: bold;
+}
+.affil {
+	font-size: 18pt;
+}
+a.hdr:link, a.hdr:visited {
+	color:#666362;
+	text-decoration: none;
+}
+a.hdr:hover {text-decoration:underline;}
+a.hdr:active {text-decoration:none;}
+
+
+/* Navbar */
+.navbar-default {
+    background-color: #113366;
+    border-color: #113366;
+    margin-top: 10px;
+    min-height: 20px;
+}
+.navbar .nav > li {
+    float: none;
+    display: inline-block;
+}
+.navbar .nav > li > a {
+    color:  #FFF;
+    text-decoration: none;
+	font-size: 14pt;
+	font-weight: bold;
+    line-height: 15px;
+}
+.navbar-default .navbar-nav > li > a:hover {color: #FFF; background: transparent}
+
+
+/* Responsiveness */
+@media (max-width: 767px) {
+    .hdr{
+        text-align: center;
+    }
+    .navbar .nav > li{
+        text-align: right;
+        display: block;
+    }
+}
+@media (max-width: 991px) {
+    .hdr{
+        text-align: center;
+    }
+    .navbar .nav{
+        float: none;
+        text-align: center;
+    }
+}
+@media (min-width: 992px) {
+    .hdr{
+        text-align: right;
+    }
+    .navbar .nav{
+        float: right;
+        text-align: right;
+    }
+}
+
+
+/* Misc */
+.bibentry {
+    font-family: courier-new;
+    margin: 10pt;
+}
+.contact {
+    margin-top: 20px;  /* should match h3 */
+}
+a.plain {
+	color: #000;
+	text-decoration: none;
+}
+
+    
+/* Tables */
+.table-ctr td, .table-ctr th{
+    text-align: center;
+}
+.pretty-table {
+	width: auto;
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	color: #000;
+	border: 1px solid #666;
+	background: #ffffff
+}
+.pretty-table caption {
+	caption-side: top;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-align: left;
+	padding: 0.5em 0
+}
+.pretty-table th, .pretty-table td {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right: 1px dotted #666;
+	border-bottom: 1px dotted #666;
+	text-align: center;
+	color: #632a39;
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+.pretty-table td.tdlist {
+	text-align: left;
+	color: #fff;
+	background-color: #7d98b3;
+	font-size: 1.1em;
+	border-top: 1px solid #333;
+	border-left: 1px solid #333;
+	border-bottom: 2px solid #333;
+	border-right: 2px solid #333
+}
+.pretty-table td.tdfiller {
+	text-align: left;
+	color: #fff;
+	background-color: #b8cfe5;
+	font-size: 0.1em;
+	border-left: 1px solid #333;
+	border-bottom: 1px solid #333;
+	border-right: 2px solid #333
+}
+.pretty-table th.on {
+	color: #fff;
+	background-color: #56677F;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	border-top: 1px dotted #222;
+	border-left: 1px dotted #222;
+	border-bottom: 2px solid #000;
+	border-right: 1px solid #000
+}
+.pretty-table th.off {
+	color: #fff;
+	background-color: #7d98b3;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	border-bottom: 2px solid #333;
+	border-right: 1px dotted #666
+}
+.pretty-table th[scope=col] {
+	color: #fff;
+	background-color: #7d98b3;
+	text-transform: uppercase;
+	font-size: 0.9em;
+	border-bottom: 2px solid #333;
+	border-right: 1px dotted #666
+}
+.pretty-table th+th[scope=col] {
+	color: #fff;
+	background-color: #7d98b3;
+	border-right: 1px dotted #666
+}
+.pretty-table th[scope=row] {
+	background-color: #b8cfe5;
+	border-right: 1px dotted #666;
+	border-bottom: 1px dotted #666;
+}
+.pretty-table tr.alt th, .pretty-table tr.alt td {
+	background-color: #eeeeee;
+	color: #2a4763
+}
+.pretty-table tr.title th, .pretty-table tr.title td {
+	color: #000;
+	font-size: 1.0em;
+	font-style: bold;
+	border: 0px
+}
+.pretty-table tr.publish th, .pretty-table tr.publish td {
+	color: #333;
+	font-size: 1.0em;
+	font-style: italic;
+	border: 0px;
+}
+.pretty-table tr.link th, .pretty-table tr.link td {
+	background-color: #e0e0ff;
+	border: 1px dotted #666;
+}
+.pretty-table tr.alt:hover td, tr.link:hover td {
+	background-color: #b8cfe5;
+}
+.pretty-table tr.link2 td {
+    text-decoration: line-through;
+   	background-color: #ffdddd;
+	border: 1px dotted #666;
+}
+.pretty-table tr.link2:hover td {
+	background-color: #ff9999;
+	color: #ffffff;
+}

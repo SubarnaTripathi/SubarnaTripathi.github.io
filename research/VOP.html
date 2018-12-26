@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Subarna | Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subarna Tripathi's homepage at the Video Processing Lab at University of California, San Diego">
+    <meta name="author" content="Subarna Tripathi">
+    <meta name="keywords" content="video processing, computer vision, segmentation, recognition">
+    <link rel="home" href="acsweb.ucsd.edu/~stripath/">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/bootstrap.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/st_vpl.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/images/logo.ICO" rel="shortcut icon">
+</head>
+
+<body style="">
+    <div class="container">
+       <!-- Header -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6 pull-left visible-md visible-lg">
+                <a href="http://acsweb.ucsd.edu/~stripath"><img src="project_files/vpl.png" class="img-responsive" alt="logo"></a>
+            </div>
+            <div class="col-xs-12 col-md-6 hdr">
+                <a class="hdr name" href="index.html">Subarna Tripathi</a><br>
+                <a class="hdr affil" href="http://videoprocessing.ucsd.edu/">Video Processing Laboratory</a><br>
+                <a class="hdr affil" href="http://www.ece.ucsd.edu/">Dept. of Electrical and Computer Eng.</a><br>
+                <a class="hdr affil" href="http://ucsd.edu/">University of California, San Diego</a>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav menu">
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/index.html">Home</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/publication.html">Publications</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/project.html">Research</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/Resume.pdf" target="Resume">Resumé</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/index.html">Contact</a></li>
+					<li><a href="https://github.com/subtri" target="Github">My Github</a></li>
+					<li><a href="http://acsweb.ucsd.edu/~stripath/memories.html">Some Memories</a></li>
+                </ul>
+            </div>
+        </div>
+        
+            <h1>Research: Object Proposals and Video Object Detection </h1>
+			<div class="well">
+			<div class="row">
+				<div class="col-md-3 visible-md visible-lg pull-right">
+					<img src="./project_files/HR_streaming.gif" class="img-responsive" alt="semantics">
+				</div>
+			<div>
+		<div>
+    
+	 <h3> Introduction </h3>
+        <p> We propose a method for generating Video Object Proposals (VOP) by considering the spatial and temporal edge contents in a video volume. We show that these VOP can learn a better video object detector through fine-tuning AlexNet model on those proposals. 
+         Youtube-Video dataset with video object proposals achieves state-of-the art detection accuracy.	</p>
+        
+        <p> We also propose an alternative test time detection framework for faster temporally-consistent detection through propagating labels by spatio-temporal clustering of those VOPs in a streaming fashion.  </p>        
+
+	<img src="./project_files/OVERLAP.png" width="30%" class="img-responsive" alt="video-object_detection" align="right">  
+	<br>
+	<br>
+	<br>
+	<br>
+	<p> The work has been accepted for publication in WACV 2016 and the latest version is available in <a href="http://arxiv.org/pdf/1601.05447v1.pdf" Arxiv </a>. Source Code of streaming clustering of Video Object Proposals (VOP) is available at <a href="https://github.com/subtri/streaming_VOP_clustering"> Github </a> . </p>
+
+				
+                			 
+
+        </p>
+		
+		
+		
+    <h3>Results</h3>
+		<p>
+              </p>
+		<div class="well">
+			<div class="row">
+				<div class="col-md-10 visible-md visible-lg pull-right-10">
+					<img src="./project_files/Obj_detect.png" class="img-responsive" alt="Object detection on Youtube-Objects">
+				</div>
+			</div>
+		</div>
+
+           
+    
+    
+      <h3>References</h3>
+        <p>[1] EdgeBoxes, ECCV14 </p> 
+	 <p>[2] R-CNN, CVPR14 </p>
+        <p>[3] Youtube-Objects dataset </p>  
+        
+    </div> <!-- /container -->
+
+    <!-- JavaScript: placed at the end of the document so the pages load faster -->
+    <script src="./video_segmentation_files/jquery-1.10.2.min.js"></script>
+    <script src="./video_segmentation_files/bootstrap.min.js"></script>
+        
+
+
+
+</body></html>

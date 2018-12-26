@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Subarna | Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subarna Tripathi's homepage at the Video Processing Lab at University of California, San Diego">
+    <meta name="author" content="Subarna Tripathi">
+    <meta name="keywords" content="video processing, computer vision, segmentation, recognition">
+    <link rel="home" href="acsweb.ucsd.edu/~stripath/">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/bootstrap.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/st_vpl.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/images/logo.ICO" rel="shortcut icon">
+</head>
+
+<body style="">
+    <div class="container">
+       <!-- Header -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6 pull-left visible-md visible-lg">
+                <a href="http://acsweb.ucsd.edu/~stripath"><img src="project_files/vpl.png" class="img-responsive" alt="logo"></a>
+            </div>
+            <div class="col-xs-12 col-md-6 hdr">
+                <a class="hdr name" href="index.html">Subarna Tripathi</a><br>
+                <a class="hdr affil" href="http://videoprocessing.ucsd.edu/">Video Processing Laboratory</a><br>
+                <a class="hdr affil" href="http://www.ece.ucsd.edu/">Dept. of Electrical and Computer Eng.</a><br>
+                <a class="hdr affil" href="http://ucsd.edu/">University of California, San Diego</a>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav menu">
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Home</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/publication.html">Publications</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/project.html">Research</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/Resume.pdf">Resumé</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Contact</a></li>
+					<li><a href="https://github.com/subtri">My Github</a></li>
+					<li><a href="http://acsweb.ucsd.edu/~stripath/memories.html">Some memories</a></li>
+                </ul>
+            </div>
+        </div>
+        
+            <h1>Research : Online Hierarchical Motion Segmentation</h1>
+				<h3>Background</h3>
+					<p> Layered representation of video (such as in [1]) is a useful mid-level video processing tool. Likewise several mothods of layered representation, we begin with oversegmentations and group them based on their geometric distances in the levels of hierarchies to form distinguishable affine motion layers. </p>
+				<h3>Description</h3>
+					<p> The oversegmentations can be of different types, either block-level or at superpixel level (such streamGBH in [2]) or based on any kind of clustering method such as stability based segmentation [3] approach. At each segment, affine a 6-dimensional affine parameter is estimated from 2-D optical flow of constituent pixel locations using RANSAC [4].</p>
+ 
+ <div class="well">
+    <div class="row">
+		<div class="col-md-6 visible-md visible-lg pull-left">
+            <img src="./project_files/block-superpixel.png" class="img-responsive" alt="block-superpixel">
+        </div>		
+		<div class="col-md-6 visible-md visible-lg pull-right">
+            <img src="./project_files/stability-init.png" class="img-responsive" alt="stability-segmentation">
+        </div>
+	</div>
+</div>
+
+ 
+<div class="well">	
+	<h3>  Hierarchical Grouping through geometric distances </h3>
+		<p> We aim at estimating motion layers by merging supervoxels or over-segmented regions having apparently little different spatio-temporal feature.  We propose a criterion to use for merging two regions based on affine flow.  The geometric distance between affine regions uses the notion of warping error based dissimilarity, directed divergence. Directed divergence of region #k from region #i div(k,i) and directed divergence of region #i from region #k div(i,k). </p>
+			<div class="col-xs-12 col-md-8 pull-left">
+			<h4>Grouping Methods at layer hierarchies</h4>
+				<p>We consider first fit or local greedy way as the region grouping method. Our assumption is if region i, region j, and region k all are to be merged; the merging criteria for all of the pairs (i,j), (j,k) or (i,k) would be satisfied. No matter with which pair we start, eventually we would come to the same grouping at the end. The directed divergence and distance metric concept has been visualized in the Figure.  Directed divergence metric is not symmetric. 
+					After the region merging, the significant errors are found especially near the object boundary. To overcome this problem, we explore Markov Random Field based smoothing as described in [5]. As we know the number and parameters for candidate motions at each hierarchy level, we apply BVZ [6] algorithm to achieve smoother segments. In the MRF framework, we intend to optimize both the pixel-wise warping error satisfying a prior smoothness constraint. 
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-md-4 visible-md visible-lg pull-right">
+					<img src="./project_files/motion_layer_grouping.png" class="img-responsive" alt="motion_layer_grouping">
+				</div>
+			</div>
+</div>
+	
+			
+    <h3>Results</h3>
+	
+        <h4>Experiment</h4>
+            <p> We see different aspects of the motion scene in terms of granularity of distinguishable motions present in the layers of hierarchy. Different regions following affine motions are grouped to produce smaller number of foreground objects as the hierarchy level increases.  </p>
+			<p> After the region merging, the significant errors are found especially near the object boundary. To overcome this problem, we explore Markov Random Field based smoothing as described in [5]. As we know the number and parameters for candidate motions at each hierarchy level, we apply BVZ [6] algorithm to achieve smoother segments. In the MRF framework, we intend to optimize both the pixel-wise warping error satisfying a prior smoothness constraint in pixel grid-based graph. </p>
+            
+		<div class="well">
+			<div class="col-xs-12 col-md-8 pull-left">
+				<p> Enforcing <b> temporal consistency </b> has two paradigms. We use a per-frame discretized flow histogram and thus the association of a motion segment from previous to current frame is not inherent. To address the issue of enforcing temporal consistence in simple and effective way, we use the segmentation from backward warping from the previous frame-pair as an initialization for the segmentation process (forward warping) of current frame-pair. Thus, the question of associativity between segments over time becomes only about an associativity of segments from forward warping to backward warping of a frame-pair. The best matching segment, in terms of overlapping area, in the second image (wrt the warped segment in the first image) establishes segment correspondence between forward and backward warped motion segmentations.
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-md-4 visible-md visible-lg pull-right">
+					<img src="./project_files/temporal_consistency.png" class="img-responsive" alt="temporal_consistency">
+				</div>
+			</div>
+		</div>
+
+
+			
+			<p> Our paper on motion layer segmentation has been accepted for publication <a href="http://www.wacv14.org"/> WACV 2014 </a>. The download link: <a href="http://arxiv.org/ftp/arxiv/papers/1402/1402.3557.pdf"> paper </a>.
+			Source Code can be found in <a href="https://github.com/subtri/motion_segmentation"> GitHub </a> </p>
+            <div class="row">
+				<div class="col-md-6 visible-md visible-lg">
+					<img src="./project_files/motion_hierarchy1.png" class="img-responsive" alt="motion_hierarchy1">
+				</div>
+				<div class="col-md-6 visible-md visible-lg">
+					<img src="./project_files/motion_hierarchy2.png" class="img-responsive" alt="motion_hierarchy2">
+				</div>		
+		</div>
+	
+
+	<div class="well">
+	<p class="h3"> Results on other videos - at level 3 </p>
+        <div class="row">
+			    <div class="col-md-10 visible-md visible-lg pull-center">
+					<img src="./project_files/motion_segmentations.jpg" class="img-responsive" alt="motion_segmentations">
+				</div>
+		</div>
+    </div>
+            
+                        
+    <h3>References</h3>
+        <p>[1] J. Y. A. Wang and E. H. Adelson, "Representing moving images with layers," IEEE Trans. Image Processing, vol. 3, pp. 625–638, Sep 1994. </p> 
+		<p>[2] A Rabinovich, T Lange, J Buhmann, and S Belongie, "Model order selection and cue combination for image segmentation," in CVPR, 2006. </p>
+		<p>[3] Martin A Fischler and Robert C Bolles, "Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography," Communications of the ACM, vol. 24, no. 6, pp. 381-395, June 1981. </p>
+		<p>[4] A Rabinovich, T Lange, J Buhmann, and S Belongie, "Model order selection and cue combination for image segmentation," in CVPR, 2006. </p>
+		<p>[5] Josh Wills, Sameer Agarwal, and Serge Belongie, "A feature-based approach for dense segmentation and estimation of large disparity motion," International Journal of Computer Vision, vol. 68, no. 2, pp. 125-143, 2006. </p>
+		<p>[6] Yuri Boykov, Olga Veksler, and Ramin Zabih, "Efficient Approximate Energy Minimization via Graph-Cuts," IEEE Transaction on Pattern Analysis and Machine Intelligence, vol. 23, 2001. </p>
+
+        
+        
+    </div> <!-- /container -->
+
+    <!-- JavaScript: placed at the end of the document so the pages load faster -->
+    <script src="./video_segmentation_files/jquery-1.10.2.min.js"></script>
+    <script src="./video_segmentation_files/bootstrap.min.js"></script>
+        
+
+
+
+</body></html>

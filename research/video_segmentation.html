@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Subarna | Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subarna Tripathi's homepage at the Video Processing Lab at University of California, San Diego">
+    <meta name="author" content="Subarna Tripathi">
+    <meta name="keywords" content="video processing, computer vision, segmentation, recognition">
+    <link rel="home" href="acsweb.ucsd.edu/~stripath/">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/bootstrap.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/css/st_vpl.css" rel="stylesheet">
+    <link href="http://acsweb.ucsd.edu/~stripath/images/logo.ICO" rel="shortcut icon">
+</head>
+
+<body style="">
+    <div class="container">
+       <!-- Header -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6 pull-left visible-md visible-lg">
+                <a href="http://acsweb.ucsd.edu/~stripath"><img src="project_files/vpl.png" class="img-responsive" alt="logo"></a>
+            </div>
+            <div class="col-xs-12 col-md-6 hdr">
+                <a class="hdr name" href="index.html">Subarna Tripathi</a><br>
+                <a class="hdr affil" href="http://videoprocessing.ucsd.edu/">Video Processing Laboratory</a><br>
+                <a class="hdr affil" href="http://www.ece.ucsd.edu/">Dept. of Electrical and Computer Eng.</a><br>
+                <a class="hdr affil" href="http://ucsd.edu/">University of California, San Diego</a>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav menu">
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Home</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/publication.html">Publications</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/research/project.html">Research</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/Resume.pdf">Resumé</a></li>
+                    <li><a href="http://acsweb.ucsd.edu/~stripath/index.html">Contact</a></li>
+					<li><a href="https://github.com/subtri">My Github</a></li>
+					<li><a href="http://acsweb.ucsd.edu/~stripath/memories.html">Some memories</a></li>
+                </ul>
+            </div>
+        </div>
+        
+            <h1>Research: StreamGBH+</h1>
+    <h3>Background</h3>
+        <p>There are three different paradigms in video segmentation. First is frame processing in which each frame is independently segmented, but no temporal information is used. This method is fast but the temporal coherence is poor. Second is 3D volume processing that represents a model for the whole video. It is bi-directional multi-pass processing. The results are best, but the complexity is too high to process long videos and does not cater to the need for streaming videos. Stream processing processes the current frame only based on a few previously processed frames. It is forward-only online processing, and the results are good and eﬃcient in terms of time and space complexity. The state-of-the-art streaming segmentation (streamGBH) outperforms other streaming methods and competitive with full-video hierarchical methods. The streamGBH in libsvx implements this video segmentation approximation framework. We, have demonstrated significant improvement in segmentation accuracy and quality by augmenting streamGBH with motion feature and bilateral filtering. We call our approach streamGBH+. </p>
+	<h3>Description</h3>
+        <p>As a pre-processing step, we apply bilateral filtering as an edge-preserving smoothing to improve segmentation. Along with color similarity, we consider motion similarity of voxels and influence of motion direction on graph connectivity. Use of dense optical flow considerably improves segmentation results. Firstly, instead of connecting a voxel (i,j,t) to its immediate 9 neighbors (i+m, j+n,t-1), m,n ϵ {-1,0,+1} in the previous frame, we connect it to its 9 neighbors along the backward flow vector (u,v), i.e. (i+u(i,j) +m, j+v(i,j)+n, t-1). This is a generalization of prior grid-based volumetric approaches which can only be achieved using a graph representation. 
+Secondly, we use optical flow as a feature for each region during hierarchical segmentation. As optical flow is only consistent within a frame, we use a per-frame discretized flow histogram. Unlike [Grundmann et al CVPR 2010] which discusses SIFT-like (with respect to angle) motion feature representation, we propose simpler representation of two histograms of horizontal and vertical component of optical flow field. The benefit of this simpler approach is to distinguish motions with same direction but different magnitude. Matching the flow-descriptors of two regions then involves averaging the χ2 distance of their normalized per-frame flow-histograms over time. 
+	We combine the χ2 distance of the normalized color histograms dc ϵ [0,1] with the χ2 distance of the normalized flow histograms df  ϵ [0,1]. 
+
+ </p>
+ 
+<div class="well">
+    <div class="row">
+		<div class="col-md-6 visible-md visible-lg">
+            <img src="./project_files/orig.gif" class="img-responsive" alt="original video frames">
+        </div>
+		<div class="col-md-6 visible-md visible-lg">
+            <img src="./project_files/level1.gif" class="img-responsive" alt="super-pixels at level 1">
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 visible-md visible-lg">
+            <img src="./project_files/level10.gif" class="img-responsive" alt="super-pixels at level 10">
+        </div>
+		<div class="col-md-6 visible-md visible-lg">
+            <img src="./project_files/level15.gif" class="img-responsive" alt="super-pixels at level 15">
+        </div>
+	</div>
+</div>
+			</p>
+    <h3>Results</h3>
+	
+        <h4>Experiment</h4>
+            <p>We use the recently published benchmark dataset (ChenXiph.org) and video segmentation performance metrics [Xu et al CVPR 2012] for the quantitative experiments. This video dataset is a subset of the well-known xiph.org videos that have been supplemented with a 24-class-semantic-pixel labeling set (The same classes from the MSRC object-segmentation dataset). In the implementation, we use sequence length 3 in all experiments and thus performance is not expected to be near to full-video processing.</p>
+            <p>The 8 videos (‘Bus’, ‘Container’, ‘Garden’, ‘Ice’, ‘Paris’, ‘Salesman’, ‘Soccer’ and ‘Stefan’) in this set are densely labeled with semantic pixels and have duration of	 85 frames each. This dataset has been used for evaluation for the state-of-the-art StreamGBH method. This dataset allowed us to evaluate these segmentation methods against human perception.</p>
+             <h4>Objective Measures</h4>
+            <p>Proposed streamGBH+ performs better than the state-of-the-art streamGBH for videos with object motions. Overall, streamGBH+ outperforms in the evaluation of metrics such as boundary recall 2D, boundary recall 3D, explained variation. As per Table 1 for the metrics accuracy 2D and accuracy 3D we see no difference for this database overall. Though, the performance of streamGBH+ for the under segmentation metrics is not better than the state-of-the-art, we care for other metrics more at this time because of our future target application on object recognition or 2D-to-3D video conversion. </p>
+			
+			<p> Our paper on streamGBH+ has been accepted for publication <a href="http://www.wacv14.org"/> WACV 2014 </a>. The download link: <a href="http://arxiv.org/ftp/arxiv/papers/1402/1402.3557.pdf"> paper</a>.
+
+            <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+            <table class="table table-bordered table-condensed table-ctr">
+            <caption><b>Table 1. comparative object values for chen database.</b></caption>
+                <thead>
+                    <td>metric</td><td>streamGBH</td><td>streamGBH & motion</td><td>streamGBH & BLF</td><td>streamGBH+</td></b></td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Boundary recall 2D</td><td>0.44</td><td>0.442</td><td>0.451</td><td><b>0.452</td></b></td>
+                    </tr>
+                    <tr>
+                        <td>Boundary recall 3D</td><td>0.47</td><td>0.482</td><td>0.49</td><td><b>0.49</td></b></td>
+                    </tr>
+					<tr>
+                        <td>Explained variation</td><td>0.71</td><td>0.72</td><td>0.73</td><td><b>0.75</td></b></td>
+                    </tr>
+					<tr>
+                        <td>Accuarcy 2D</td><td>0.58</td><td>0.58</td><td>0.58</td><td>0.58</td></td>
+                    </tr>
+					<tr>
+                        <td>Accuarcy 3D</td><td>0.56</td><td>0.54</td><td>0.55</td><td>0.55</td></td>
+                    </tr>
+					<tr>
+                        <td>Undersegmentation error 2D</td><td>8</td><td>9</td><td>9</td><td>10</td></td>
+                    </tr>
+					<tr>
+                        <td>Undersegmentation error 3D</td><td>18</td><td>18</td><td><b>15</td></b><td>18</td></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            </div>
+            </div>
+            
+                        
+    <h3>References</h3>
+        <p>[1] C. Xu, C. Xiong, and J. J. Corso. Streaming hierarchical video segmentation. In Proceedings of European Conference on Computer Vision, 2012. </p> 
+        
+        
+    </div> <!-- /container -->
+
+    <!-- JavaScript: placed at the end of the document so the pages load faster -->
+    <script src="./video_segmentation_files/jquery-1.10.2.min.js"></script>
+    <script src="./video_segmentation_files/bootstrap.min.js"></script>
+        
+
+
+
+</body></html>
