@@ -60,13 +60,40 @@
         </div>
       <!/div>
 
-      <div class="row-fluid" ">
-        <div id="about" class="span9" style="text-align:justify">
-          <h2>Improving Image Generation from Scene Graphs </h2>
-          
-		  <img src="images/sg2im_summary.png" width="30%" height="30%" style="margin: 10px 5px"
-      align="left"> 
-            Generating realistic images from scene graphs requires neural networks to be able to reason about object relationships and compositionality. 
+<div class="pageTitle">
+  PartNet: Using Scene Graph Context to Improve Image Generation 
+  <br>
+  <br>
+  <span class = "Authors">
+      <a href="https://subarnatripathi.github.io/" target="_blank">Subarna Tripathi</a><sup>1</sup> &nbsp; &nbsp;
+      Anahita Bhiwandiwalla <sup>1</sup> &nbsp; &nbsp;
+      Alexei Bastidas <sup>1</sup> &nbsp; &nbsp;
+      Hanlin Tang <sup>1</sup> &nbsp; &nbsp;<br>
+      <sup>1</sup><a href = "https://ai.intel.com/" target="_blank"> Intel AI Lab </a> &nbsp; &nbsp;
+      <a href="https://lld-workshop.github.io/" target="_blank"><i>Learning with Limited Labeled Data (LLD) 2019</i></a>
+  </span>
+  </div>
+<br>
+<div class = "material">
+        <a href="https://arxiv.org/abs/1901.03762" target="_blank">[ArXiv Preprint]</a>
+        <a href="https://openreview.net/forum?id=r1eqsNXgdV" target="_blank">[LLD OpenReview]</a> 
+        <a href="https://arxiv.org/pdf/1904.09348.pdf" target="_blank">[Related work to appear in CVPRW (CEFRL)]</a> 
+</div>
+
+  <p class = "abstractText">
+  <b style="color: green; background-color: #ffff42">NEW</b> [April 19, 2019] We release our 3D web-based annotation system <a href="https://github.com/daerduoCarey/partnet_anno_system" target="_blank">here</a>. Please watch <a href="https://youtu.be/7pEuoxmb-MI" target="_blank">this video</a> for reference.</p>
+  <p class = "abstractText">
+    <b style="color: green; background-color: #ffff42">NEW</b> [March 29, 2019] Updated prelease of PartNet v0 with better organization, visualizations, and separate downloads for HDF5 file sfor semantic and instance segmentation tasks. Github repo and Data download page are updated.</p>
+  <p class = "abstractText">
+  <b style="color: green; background-color: #ffff42">NEW</b> [March 12, 2019] We release <a href="https://www.shapenet.org/download/parts" target="_blank">PartNet v0 (pre-release version)</a> as a part of ShapeNet effort. Please register as a ShapeNet user first in order to download. We provide meta-files and scripts on <a href="https://github.com/daerduoCarey/partnet_dataset" target="_black">this Github repo</a>. If you have any questions, please post <a href="https://github.com/daerduoCarey/partnet_dataset/issues" target="_blank">issues on the github page</a>. If you have general feedbacks, please fill in <a href="https://docs.google.com/forms/d/e/1FAIpQLSetsP7aj-Hy0gvP2FxRT3aTIrc_IMqSqR-5Xl8P3x2awDkQbw/viewform?usp=sf_link" target="_blaank">this form</a> to let us know. If you observe any data annotation error, please fill in <a href="https://docs.google.com/spreadsheets/d/1Q_6r9EblZdP9Grhhm2ob4u0FQ8xurAThlgK-qAcjYP0/edit#gid=0" target="_blank">this errata</a> to help improve PartNet. We will release stable version v1 later and will host PartNet challenges on v1.
+</p>
+
+
+  <div class = "abstractTitle">
+  Abstract
+  </div>
+  <p class = "abstractText">
+  Generating realistic images from scene graphs requires neural networks to be able to reason about object relationships and compositionality. 
             Learning a sufficiently rich representation to facilitate this reasoning is challenging due to dataset limitations. 
             Synthetic scene graphs from COCO only have basic geometric relationships, and Visual Genome scene graphs are replete 
             with missing relations or mislabeled nodes. Existing scene graph to image models have two stages: (1) a scene composition 
@@ -78,53 +105,12 @@
             Introspection shows that these heuristics are particularly effective in learning differentiated representations for 
             scenes with multiple instances of the same object category. Obtaining accurate and complete scene graph annotations is 
             costly, and our use of heuristics and prior structure to enhance intermediate representations allows our model to 
-            compensate for limited or incomplete data.
-        </div>
-      </div>
+            compensate for limited or incomplete data.</p>
+	    
+	    
+	    
+            
+       
       
-      
-      <div class="row-fluid">
-        <div id="Research" class="span12">
-        <h2>Publications</h2>
-        <ul>
-	        <li>  HEURISTICS   FOR   IMAGE   GENERATION   FROM  SCENEGRAPHS,  ICLR workshop (LLD) 2019 </li> 				 				  
-	        <li>  <a href="https://arxiv.org/pdf/1904.09348.pdf">  Compact Scene Graphs for Layout Composition and Patch Retrieval </a> to appear in CVPRW (CEFRL) 2019 </li> 				 
-	        <li> [January 2019] <a href="https://arxiv.org/abs/1901.03762"> Using Scene Graph Context to Improve Image Generation </a> available on arXiv </li>
-          </ul>
-        </div>
-		
-		
-	  
-	  <hr>
-    
-    </div>
-    
-    <script>
-      function resizeMainUnit() {
-        mainUnit = $("#mainUnit")
-        mainUnit.css({"background-color":"black", "padding":"100px 45px 0 0"});
-        if(mainUnit.width() < 366) {
-          mainUnit.height("auto");
-        }
-        else {
-          mainUnit.height(mainUnit.width() * .35);
-        }
-        basisWidth = (mainUnit.width() <= 500) ? 500 : mainUnit.width();
-        $("#myName").css({"font-size":basisWidth * .065});
-        $("#subtitile").css({"font-size":basisWidth * .028});
-      }
-      $( window ).resize(resizeMainUnit);
-      $(resizeMainUnit);
-      // add extra scroll to account for navbar
-      $('body').on('click.scroll-adjust', '[href^="#"]', function (e) {
-        var $nav
-        if ( e && e.isDefaultPrevented() ) return
-        $nav = $('div.navbar')
-        if ( $nav.css('position') !== "fixed" ) return
-        $(window).one('scroll', function () {
-          window.scrollBy(0, -$nav.height())
-        });
-      });
-    </script>
-  
+     
 </body></html>
